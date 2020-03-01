@@ -1,3 +1,4 @@
+#function to create the matrix
 makeCacheMatrix <- function(t = matrix()) {
     p <- NULL
   inputy <- function(h) {
@@ -5,20 +6,22 @@ makeCacheMatrix <- function(t = matrix()) {
           p <<- NULL
   }
   cally <- function() t
-  input <- function(inverse) p <<- inverse
+  inputmatrix <- function(inverse) p <<- inverse
   callinv <- function() p
   list(inputy = inputy,
        cally = cally,
-       input = input,
+       inputmatrix = inputmatrix,
        callinv= callinv)
 }
 
+#function to create the inverse of the matrix
 cacheSolve <- function(u, ...) {
   n <- u$callinv()
   if (!is.null(n)) {
           message("getting cached data")
           return(n)
 }
+    
 chest <<- u$cally()
   n <- solve(chest, ...)
   u$ inputy (n)
